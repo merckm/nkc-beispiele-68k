@@ -9,16 +9,16 @@ schreite	equ	1
 drehe		equ	2
 
 quadrat:
-	move.w #4-1,d3
+	move.w #4-1,d3			# vier Mal
 schleife:
-	move.w #50,d0
+	move.w #50,d0			# Seitenlänge
 	move.w #schreite,d7
 	trap #1
-	move.w #90,d0
+	move.w #90,d0			# Winkel
 	move.w #drehe,d7
 	trap #1
-	dbra d3,schleife
-	rts
+	dbra d3,schleife		# Schleifenende?
+	rts						# Programmende
 
 	end
 	
