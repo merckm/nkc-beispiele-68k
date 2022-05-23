@@ -1,0 +1,36 @@
+;
+; Beispiel Program aus "Die Prozessoren 68000 und 68008" Seite 71
+; Author Rolf-Dieter Klein
+; VASM Assembler code von Dr. Martin Merck
+;
+	org $9C00
+
+schreite	equ	1
+drehe		equ	2
+
+ziffer1:
+	move.w #-90,d0			# Drehe nach links
+	move.w #drehe,d7
+	trap #1
+	move.w #50,d0			# Vorwärts
+	move.w #schreite,d7
+	trap #1
+	move.w #-25,d0			# Rückwärts un halbe länge
+	move.w #schreite,d7
+	trap #1
+	move.w #90,d0			# Nach oben
+	move.w #drehe,d7
+	trap #1
+	move.w #100,d0			# Vorwärts
+	move.w #schreite,d7
+	trap #1
+	move.w #90+45,d0		# Nach links unten
+	move.w #drehe,d7
+	trap #1
+	move.w #2*2500/141,d0	# c = (2 * a) / sqrt(2)
+	move.w #schreite,d7
+	trap #1
+	rts						# Programmende
+
+	end
+	
