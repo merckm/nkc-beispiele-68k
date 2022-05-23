@@ -1,0 +1,52 @@
+;
+; Beispiel Program aus "Die Prozessoren 68000 und 68008" Seite 75
+; Author Rolf-Dieter Klein
+;
+; PROGRAMM FUER UNTERSCHIEDLICH
+; GROSSE ZIFFERN
+;
+	org $9C00
+
+schreite	equ	1
+drehe		equ	2
+
+ZIFFER:
+	move.w #-90,d0			; Drehe nach links
+	move.w #drehe,d7
+	trap #1
+	move.w d3,d0
+	mulu.w #2,d0			; Vorwärts 2 * Grösse
+	move.w #schreite,d7
+	trap #1
+	move.w d3,d0			; Rückwärts Grösse
+	neg	d0
+	move.w #schreite,d7
+	trap #1
+	move.w #90,d0			; Drehe nach oben
+	move.w #drehe,d7
+	trap #1
+	move.w d3,d0
+	mulu.w #4,d0			; Nach oben 4 * Grösse 
+	move.w #schreite,d7
+	trap #1
+	move.w #90+45,d0		; Nach links unten
+	move.w #drehe,d7
+	trap #1
+	move.w d3,d0
+	mulu.w #200,d0			; Nach oben 4 * Grösse 
+	divu.w #141,d0			; c = (2 * a) / sqrt(2)
+	move.w #schreite,d7
+	trap #1
+	rts						; Programmende
+
+START:
+	move.w #10,d3			; Schriftgroesse
+	bsr ZIFFER
+	move.w #20,d3			; Schriftgroesse 2
+	bsr ZIFFER
+	move.w #50,d3			; Schriftgroesse 3
+	bsr ZIFFER
+	rts
+
+	end
+	
