@@ -8,7 +8,7 @@
 schreite	equ	1
 drehe		equ	2
 
-ziffer1:
+ZIFFER1:
 	move.w #-90,d0			; Drehe nach links
 	move.w #drehe,d7
 	trap #1

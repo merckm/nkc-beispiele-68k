@@ -1,0 +1,7 @@
+lerne quadrat
+ wh 4 [vw 100 re 90]
+ende
+ 
+stiftab
+wh 10 [quadrat li 36]
+vi

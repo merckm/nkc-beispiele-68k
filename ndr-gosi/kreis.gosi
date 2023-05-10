@@ -1,0 +1,8 @@
+lerne kreis
+ wenn taste? [rueckkehr]
+ vw 1 re 1
+ kreis
+ende
+ 
+sa
+kreis

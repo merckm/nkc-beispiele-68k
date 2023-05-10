@@ -1,0 +1,15 @@
+lerne fakultaet :n
+ wenn :n=0 [rueckgabe 1]
+ rueckgabe (fakultaet :n-1)*:n
+ende
+ 
+lerne benutzer
+ dr [n eingeben:]
+ setze "n (zahl 20)
+ wenn :n<0 [rueckkehr]
+ dz [ Fak von ] :n [ ist ] (fakultaet :n)
+ benutzer
+ende
+ 
+vi
+benutzer

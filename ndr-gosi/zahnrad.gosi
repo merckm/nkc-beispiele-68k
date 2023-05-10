@@ -1,0 +1,31 @@
+lerne zahnrad
+ wh 24 [ vw 20 re 125 vw 20 re 250 ]
+ende
+ 
+vi
+seite 0 0
+zahnrad
+sh mitte
+re 55 schr16tel 74 li 55
+aufkurs 90-4
+sa
+seite 1 1
+zahnrad
+sh mitte
+re 55 schr16tel 74*2 li 55
+aufkurs 90-8
+sa
+seite 2 2
+zahnrad
+sh mitte
+re 55 schr16tel 74*3 li 55
+aufkurs 90-11
+sa
+seite 3 3
+zahnrad
+ 
+@setflip 0 2
+ 
+sh aufxy -10 (-10) sa
+ 
+solange ~taste? [@autoflip]

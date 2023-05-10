@@ -1,0 +1,72 @@
+option [M]
+ 
+lerne fun :x :y
+ rg (sin(:x)+sin(:y))/20
+ende
+vi sa
+setze "xa 0
+setze "ya 0
+setze "va 2
+ 
+lerne inner :y
+ wenn :y > :y2 [rk]
+ setze "res (fun :x :y)
+ setze "yy :res+(:y-:y1)/12+200-:h0
+ setze "nh :nh+1
+ setze "xx :h0+:nh*5
+ wenn :first=1 [linie :xa :ya :xx :yy ]
+ setze "xa :xx
+ setze "ya :yy
+ setze "first 1
+ inner :y+10
+ende
+
+lerne outer :x
+ setze "first 0
+ wenn :x > :x2 [rk]
+ setze "h0 (:x-:x1)/5
+ setze "nh -1
+ inner :y1
+ outer :x+10
+ende
+ 
+setze "x1 -360
+setze "x2 400
+setze "y1 -360
+setze "y2 400
+  
+outer :x1
+ 
+lerne inner2 :y
+ setze "first 0
+ wenn :y > :y2 [rk]
+ setze "h0 0
+ setze "nh :nh+1
+ outer2 :x1
+ inner2 :y+10
+ende
+ 
+lerne outer2 :x
+ wenn :x > :x2 [rk]
+ setze "res (fun :x :y)
+ setze "yy :res/2+(:y-:y1)/12+200-:h0
+ setze "xx :h0+:nh*5
+ setze "h0 (:x-:x1)/5
+ wenn :first=1 [linie :xa :ya :xx :yy ]
+ setze "xa :xx
+ setze "ya :yy
+ setze "first 1
+ outer2 :x+10
+ende
+ 
+ 
+setze "nh -1
+setze "x1 -360
+setze "x2 400
+setze "y1 -360
+setze "y2 400
+ 
+inner2 :y1
+ 
+ende
+

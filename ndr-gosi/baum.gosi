@@ -1,0 +1,14 @@
+lerne baum :laenge :tiefe
+ vw :laenge
+ wenn :tiefe=0 [rueckkehr]
+ li 30
+ baum :laenge/2 :tiefe-1
+ re 60
+ baum :laenge/2 :tiefe-1
+ li 30
+ rw :laenge
+ende
+ 
+sa
+baum 100 10
+vi

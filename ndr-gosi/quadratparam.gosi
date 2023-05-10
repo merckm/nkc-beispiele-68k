@@ -1,0 +1,8 @@
+lerne quadrat :groesse
+ wh 4 [vw :groesse re 90]
+ende
+ 
+sa
+quadrat 100
+quadrat 50
+vi

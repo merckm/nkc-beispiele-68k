@@ -1,0 +1,10 @@
+lerne sternenhimmel
+ wenn taste? [rueckkehr]
+ sh aufxy (:zz 512) (:zz 512)
+ setze :groesse (:zz 24)+6
+ sa wh 6 [vw :groesse re 144]
+ sternenhimmel
+ende
+ 
+sternenhimmel
+vi

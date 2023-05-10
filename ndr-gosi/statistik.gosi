@@ -1,0 +1,19 @@
+feld "ergebnis 250
+ 
+lerne loeschefeld :n
+ setze "ergebnis[:n] 0
+ wenn :n=0 [rk]
+ loeschefeld :n-1
+ende
+ 
+lerne statistik :zaehler
+ wenn :zaehler=0 [rk]
+ setze "a (:zz 125)+(:zz 125)
+ setze "ergebnis[:a] :ergebnis[:a]+1
+ linie :a*2 0 :a*2 :ergebnis[:a]
+ statistik :zaehler-1
+ende
+ 
+loeschefeld 250
+statistik 10000
+vi

@@ -1,0 +1,12 @@
+lerne ziegelturm :tiefe
+ sa wh 4 [vw 20 re 90]
+ wenn :tiefe=0 [rueckkehr]
+ sh rw 20 li 90 vw 10 re 90
+ ziegelturm :tiefe-1
+ sh re 90 vw 20 li 90
+ ziegelturm :tiefe-1
+ sh li 90 vw 10 re 90 vw 20
+ende
+ 
+ziegelturm 8
+vi

@@ -1,0 +1,10 @@
+lerne polyspi :laenge :winkel :maximal
+ wenn :maximal=0 [rueckkehr]
+ vw :laenge re :winkel
+ poly :laenge+3 :winkel :maximal-1
+ende
+ 
+sa
+polyspi 1 121 70
+polyspi 1 91 73
+polyspi 1 181 100

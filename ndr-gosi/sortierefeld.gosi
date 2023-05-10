@@ -1,0 +1,45 @@
+zfeld "alles 80*101
+zfeld "hilf 80
+ 
+lerne loeschefeld :n
+ setze "alles[:n*80] 0
+ wenn :n=0 [rk]
+ loeschefeld :n-1
+ende
+ 
+lerne einlesefeld :n
+ setze "alles[:n*80] (eingabe 30)
+ wenn :alles[:n*80]=0 [rk]
+ wenn :n=0 [rk]
+ einlesefeld :n-1
+ende
+ 
+lerne sortierefeld :n :merker
+ wenn :alles[:n*80]<>0 [
+  wenn :alles[:n*80]>:alles[(:n-1)*80]
+   [ setze "hilf :alles+:n*80
+     setze "alles[:n*80] :alles[(:n-1)*80]
+     setze "alles[(:n-1)*80] :hilf
+     setze "merker 1
+  ]
+ ]
+ wenn :n=1 [ wenn :merker=0 [rk]
+  [ setze "merker 0
+    setze "n 101 ]]
+ sortierefeld :n-1 :merker 
+ende
+ 
+lerne ausgabefeld :n
+ wenn :alles[:n*80]<>0 [dz :alles+:n*80]
+ wenn :n=0 [rk]
+ ausgabefeld :n-1
+ende
+ 
+vi
+loeschefeld 100
+einlesefeld 100
+ausgabefeld 100
+dz [bittte warten ...]
+sortierefeld 100 0
+dz [Ergebnis: ]
+ausgabefeld 100

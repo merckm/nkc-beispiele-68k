@@ -1,0 +1,14 @@
+zfeld "hilfsfeld 80
+ 
+lerne sperrdruck :index
+ wenn :hilfsfeld[:index]=0 [rk]
+ zeichen :hilfsfeld[:index] dr [ ]
+ sperrdruck :index+1
+ende
+ 
+setze "hilfsfeld [Hallo Sperrdruck]
+sperrdruck 0
+dz
+setze "hilfsfeld (eingabe 30)
+dz
+sperrdruck 0

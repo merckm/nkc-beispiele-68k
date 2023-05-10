@@ -1,0 +1,18 @@
+lerne neupoly :laenge :winkel
+ wenn taste? [rueckkehr]
+ vw :laenge re :winkel
+ vw :laenge re (2* :winkel)
+ neupoly :laenge :winkel
+ende
+ 
+sh
+aufxy 100 100
+sa
+neupoly 50 144
+sh
+aufxy 300 200
+aufkurs 90
+sa
+setze "dummy taste
+neupoly 10 125
+

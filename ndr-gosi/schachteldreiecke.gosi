@@ -1,0 +1,10 @@
+lerne schachteldreiecke :laenge
+ wenn :laenge<5 [rueckkehr]
+ wh 3 [
+    schachteldreiecke :laenge/2
+    vw :laenge re 120
+ ]
+ende
+
+schachteldreiecke 220
+vi

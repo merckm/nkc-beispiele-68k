@@ -1,0 +1,8 @@
+lerne poly :laenge :winkel
+ wenn taste? [rueckkehr]
+ vw :laenge re :winkel
+ poly :laenge :winkel
+ende
+ 
+sa
+poly 100 108

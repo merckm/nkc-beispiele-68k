@@ -1,0 +1,16 @@
+feld "alpha 100
+ 
+lerne loeschefeld :startwert
+ setze "alpha[:startwert] 0
+ wenn :startwert=0 [rk]
+ loeschefeld :startwert-1
+ende
+ 
+lerne druckefeld :startwert
+ dz :alpha[:startwert]
+ wenn :startwert=0 [rk]
+ druckefeld :startwert-1
+ende
+ 
+loeschefeld 100
+druckefeld 100
