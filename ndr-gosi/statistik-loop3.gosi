@@ -1,0 +1,23 @@
+option [M]
+feld "f 10000
+setze "i 0
+wh 10000 [setze"f[:i] 0 setze "i :i+1]
+ 
+lerne ausgabe :x :y
+ setze "h :f[:x+20*:y]
+ setze "x1 :x*15 +:y*4
+ linie :x1 :y*6 :x1 :y*6+:h
+ende
+ 
+lerne statistik :n
+ wenn :n=0 [rk]
+ setze "x (zz 5)+(zz 6)+(zz 6)+(zz 6)
+ setze "y (zz 5)+(zz 6)+(zz 6)+(zz 6)
+ setze "f[:x+20*:y] :f[:x+20*:y]+1
+ ausgabe :x :y
+ statistik :n-1
+ende
+ 
+vi
+statistik 20000
+vi
