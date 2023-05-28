@@ -1,4 +1,5 @@
 /* Kleines C-Beispiel */
+/* Loop 04, Seite 12  */
 
 #include <stdio.h>
 
