@@ -1,0 +1,4 @@
+EDITRDK $1.S
+AS68 -P $1.S
+RELOC $1.O $1.68K
+ERA $1.O
