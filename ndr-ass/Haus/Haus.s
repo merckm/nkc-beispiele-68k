@@ -3,7 +3,7 @@ quadrat:
 quad1:
  move #100,d0
  jsr @schreite
- modve #90,d0
+ move #90,d0
  jsr @drehe
  dbra d3,quad1
  rts 
