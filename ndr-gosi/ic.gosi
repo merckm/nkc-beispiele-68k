@@ -1,0 +1,126 @@
+lerne testen :n
+ wenn :n=0 [rk]
+ blinker 0 :n
+ dr :n
+ testen :n-1
+ende
+ 
+lerne pad :x :y :i
+ sh aufxy 6*:x-4 512-20*(:y+1)-1 sa
+ aufkurs 90
+ wh 2 [vw 20 re 90 vw 18 re 90]
+ blinker :x :y
+ dr :i
+ende
+ 
+lerne gehaeuse :n
+ sh aufxy (40-10)*6-4+18 512-20*(:n+1)-1-10 sa
+ aufkurs 90
+ vw :n/2*40 re 90
+ vw 6*10-9-1
+ vw 11 re 90 wh 18 [vw 2 re 10]
+ sh wh 18 [vw 2 re 10] sa li 90 rw 10
+ vw 6*10-9 re 90
+ vw :n/2*40 re 90
+ vw 6*20-18-1 re 90
+ende
+ 
+lerne ic :n
+ setze "x 40-10
+ setze "y 2
+ setze "i 1
+ wh :n/2 [
+  pad :x :y :i
+  setze "i :i+1
+  setze "y :y+2
+ ]
+ setze "x 40+10
+ setze "y 2
+ setze "i :n
+ wh :n/2 [
+  pad :x :y :i
+  setze "i :i-1
+  setze "y :y+2
+ ]
+ende
+ 
+zfeld "icname 30
+zfeld "hilf 80
+zfeld "pins 40
+ 
+lerne zaehle 
+ setze "count 0
+ solange :hilf[:count] <> 0
+  [ setze "count :count+1]
+ rg :count
+ende
+ 
+lerne nameein
+ blinker 40-10 0
+ setze "icname :eingabe 20
+ setze "hilf :icname
+ blinker 40-(zaehle)/2 0
+ dr :icname
+ende
+ 
+lerne pinein :n
+ setze "y 2
+ wh :n/2 [
+  blinker 0 :y
+  setze "pins :eingabe 28
+  setze "hilf :pins
+  blinker 28-(zaehle) :y
+  dr :pins
+  setze "i :i+1
+  setze "y :y+2
+ ]
+ setze "x 40+14
+ setze "y 2
+ setze "i :n
+ wh :n/2 [
+  blinker :x :y
+  setze "pins :eingabe 28
+  setze "hilf :pins
+  blinker :x :y
+  dr :pins
+  setze "i :i-1
+  setze "y :y+2
+ ]
+ende
+ 
+zfeld "komm 40
+ 
+lerne kommentar :n
+ setze "x 40-7
+ setze "y 3
+ wenn :n>2 [
+  wh :n-2 [
+   blinker :x :y
+   setze "komm :eingabe 15
+   setze "hilf :komm
+   blinker 40-(zaehle)/2 :y
+   dr :komm
+   setze "y :y+1
+  ]
+ ]
+ende
+ 
+lerne icaus
+ bild vi seite 0 0
+ blinker 20 10
+ dr [Pin-Anzahl eingeben:]
+ setze "anzahl :zahl 10
+ wenn :anzahl < 2 [rk]
+ bild vi seite 0 0
+ ic :anzahl
+ gehaeuse :anzahl
+ nameein
+ pinein :anzahl
+ kommentar :anzahl
+ solange ~:taste? [ ]
+ setze "a :taste
+ icaus
+ende 
+ 
+icaus
+vi
