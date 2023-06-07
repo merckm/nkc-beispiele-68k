@@ -1,4 +1,4 @@
-* Assemblerprogramm zum Aufruf vo Grundprog.
+* Assemblerprogramm zum Aufruf von Grundprog.
 * Funktionen von C aus.
 * Loop 04, Seite 13
     .globl _init,_moveto,_drawto

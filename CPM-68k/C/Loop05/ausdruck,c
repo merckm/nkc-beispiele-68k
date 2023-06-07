@@ -1,0 +1,28 @@
+/* Unterprogrammaufruf im Grundprogramm mit Adressuebergabe */
+/*                                                          */
+/* Einfuehrung in C, Teil 2                                 */
+/* Loop 05, Seite 20                                        */
+ 
+#include <stdio.h>
+ 
+EXTERN init();
+EXTERN wert();
+ 
+main()
+{
+    LONG ergebnis;
+    int status;
+    char buffer[100];
+    init();             /* unbedingt aufrufen, sonst geht wert() nicht */
+    do
+    {
+        printf("Ausdruck eingeben: ");
+        gets(buffer);
+        wert(buffer,&ergebnis,&status);
+        if(status != 0)
+          printf("Ergebnis: dezimal %ld , sedezimal %lx \n",ergebnis,ergebnis);
+        else
+          printf("Eingabe-Fehler\n");
+    } while ( strcmp(buffer,"End") != 0);
+}   
+

@@ -1,0 +1,8 @@
+a:cp68 -i a: baum.c baum.i
+a:c068 baum.i baum.1 baum.2 baum.3 -f
+era 1.i
+a:c168 baum.1 baum.2 baum.s
+era baum.1
+era baum.2
+a:as68 -l -u -s a:baum.s
+ 
