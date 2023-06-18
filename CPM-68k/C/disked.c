@@ -1,21 +1,27 @@
 /*****************************/
 /* DISKEDITOR aus MC 02/1987 */
+/* von: Matthias Koefferlein */
+/* Angepasst für             */
+/* NDR-Klein Computer        */
+/* Dr. Martin Merck 20230618 */
 /*****************************/
-#define CLS 12                      /* Definitionen: Schirm loeschen      */
-#define UP 30                       /*   Cursor nach oben                 */
-#define DOWN 31                     /*   Cursor nach unten                */
-#define LEFT 29                     /*   Cursor nach links                */
-#define RIGHT 28                    /*   Cursor nach rechts               */
+#include <stdio.h>
+
+#define CLS 26                      /* Definitionen: Schirm loeschen      */
+#define UP 5                        /*   Cursor nach oben                 */
+#define DOWN 24                     /*   Cursor nach unten                */
+#define LEFT 19                     /*   Cursor nach links                */
+#define RIGHT 4                     /*   Cursor nach rechts               */
 #define ESC 27                      /*   Escape                           */
 #define BS 6                        /*   Backspace                        */
 #define CR 13                       /*   Carriage Return                  */
-#define HOME 11                     /*   Code fuer Taste: Home            */
+#define HOME 30                     /*   Code fuer Taste: Home            */
 #define END 17                      /*                    Linke u. Ecke   */
  
 #define scan() bios(3, 0)           /* Keyboard abfragen: BIOS Fkt. #3    */
-#define goxy(xp,yp) printf("\033y%c%c",(xp)+32,(yp)+32)
+#define goxy(xp,yp) printf("%c=%c%c",ESC,(yp)+32,(xp)+32)
                                     /* Sequenz fuer Cursor absolut setzen */
-#define clrel() printf("\033k")     /* Sequenz fuerZeilenende loeschen    */
+#define clrel() printf("%cT",ESC)   /* Sequenz fuer Zeilenende loeschen   */
  
 char buffer[128];                   /* Puffer fuer Sektor                 */
 int sect = 0;                       /* Sektornummer (physikalisch)        */
@@ -140,14 +146,14 @@ title()                             /* Titelbild ausgeben                 */
  
     putchar(CLS);
     printhl();
-    puts("\t\t     SEKTOR T:  ,S:  > LAUFWERK <  : >");
+    puts("\t\t     SEKTOR <T:  ,S:  > LAUFWERK <  : >");
     puts("\n     x0 x1 x2 x3 x4 x5 x6 x7 x8 x9 xA xB xC xD xE xF\n");
     puts("\n\n\n\n\n\n\n\n\n\n\n\t    <S> TRACK UND SEKTOR SETZEN");
     puts("\t    <R> SEKTOR LESEN\t\t       RECORDS PRO TRACK <  >");
     puts("\t    <W> SEKTOR SCHREIBEN\t\t    BLOCKGROESSE <    >");
     puts("\t    <E> ANGEWAEHLTES BYTE AENDERN\tDISKETTENGROESSE <    >");
-    puts("\t    <L> LAUFWERK AUSWAEHLEN\t    DIRECTORY-EINTRAEGE <    >");
-    puts("\t  <ESC> EDITOR VERLASEN\t       RESERVIERTE TRACKS <  >");
+    puts("\t    <L> LAUFWERK ANWAEHLEN\t     DIRECTORY-EINTRAEGE <    >");
+    puts("\t  <ESC> EDITOR VERLASSEN\t      RESERVIERTE TRACKS <  >");
     puts(" <CURSORTASTEN> CURSOR BEWEGEN\t\t\t\t  TRACKS <    >");
 }
  
@@ -176,7 +182,7 @@ int line;                           /* Zeile: 0..7                        */
     char *p, ascii[17];             /* ascii[]; Puffer fuer ASCII-Dump    */
  
     goxy(0, line + 5);              /* Cursor positionieren               */
-    printf("%cx    ",line + 48);    /* Zeilennummer ausgeben (0x .. 7x)   */
+    printf("%cx   ",line + 48);     /* Zeilennummer ausgeben (0x .. 7x)   */
     p = buffer + line * 16;         /* p: Zeiger aus auszugebendes Byte   */
     for (i = 0; i < 16; i++) {
         printf("%02x ", (int)*p & 0xFF);
@@ -197,7 +203,7 @@ int def;                        /* def: default-Wert                      */
     int pos = 0;                    /* pos: Eingabeposition (0 .. 2)      */
     int by = 0;                     /* by: Puffer fuer Byte               */
  
-    printf("  %c%c", LEFT, LEFT);   /* Feld loeschen                      */
+    printf("  \b\b");               /* Feld loeschen                      */
     while ((c = scan()) != CR) {    /* CR beendet eingabe                 */
         for (i = 0; i < 16; i++) {
             if (hexu[i] == c || hexl[i] == c ) {
@@ -268,7 +274,7 @@ setsek()                            /* Sektorparameter setzen             */
     bios(10, track);                /* BIOS Fkt. #10 (Set trach number)   */
     bios(11, sectxlt(xtable, sect));
                                     /* BIOS Fkt. #11 (Set sector number)  */
-    bios(12, buffer);               /* BIOS Fkt. #12 (Set DMA address)    */
+    biosl(12, buffer);              /* BIOS Fkt. #12 (Set DMA address)    */
 }
  
 writes()                            /* Sektor schreiben                   */
