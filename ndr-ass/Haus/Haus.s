@@ -15,7 +15,7 @@ drei1:
  jsr @schreite
  move #120,d0
  jsr @drehe
- dbra d3,drei1:
+ dbra d3,drei1
  rts 
  
 start:
