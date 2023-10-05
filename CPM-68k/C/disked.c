@@ -1,7 +1,7 @@
 /*****************************/
 /* DISKEDITOR aus MC 02/1987 */
 /* von: Matthias Koefferlein */
-/* Angepasst für             */
+/* Angepasst fuer            */
 /* NDR-Klein Computer        */
 /* Dr. Martin Merck 20230618 */
 /*****************************/
