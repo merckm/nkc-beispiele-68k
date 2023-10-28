@@ -1,0 +1,15 @@
+lerne ldragon :size :level
+wenn :level=0 [vw: size rk]
+ldragon :size :level-1
+li 90
+rdragon :size :level-1
+ende
+
+lerne rdragon :size2 :level2
+wenn :level2=0 [vw: size2 rk]
+ldragon :size2 :level2-1
+re 90
+rdragon :size2 :level2-1
+ende
+
+ldragon 4 11
