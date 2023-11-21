@@ -1,7 +1,7 @@
 lerne polyspi :laenge :winkel :maximal
  wenn :maximal=0 [rueckkehr]
  vw :laenge re :winkel
- poly :laenge+3 :winkel :maximal-1
+ polyspi :laenge+3 :winkel :maximal-1
 ende
  
 sa
