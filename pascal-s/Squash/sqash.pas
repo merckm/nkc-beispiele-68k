@@ -9,47 +9,52 @@ var ENDE,GESCHWINDIGKEIT,ZAEHLER,A:integer;
     ANTWORT,PAUSE,START:integer;
     LAENGE,ABSTAND,ABFRAGE:integer;
     SEED:real;
+ 
 procedure UMRANDUNG;
   var X,Y:integer;
   begin
     writeln(chr(1),'E @SETFLIP');
     for X:=5 to 9 do begin
       Y:=3;
-      writeln(chr(1),'E @MOVETO',0,' ',X,' ',Y);
+      writeln(chr(1),'E @MOVETO ',0,' ',X,' ',Y);
       Y:=255;
-      writeln(chr(1),'E @DRAWTO',0,' ',X,' ',Y);
+      writeln(chr(1),'E @DRAWTO ',0,' ',X,' ',Y);
     end;
     for Y:=241 to 245 do begin
       X:=5;
-      writeln(chr(1),'E @MOVETO',0,' ',X,' ',Y);
+      writeln(chr(1),'E @MOVETO ',0,' ',X,' ',Y);
       X:=505;
-      writeln(chr(1),'E @DRAWTO',0,' ',X,' ',Y);
+      writeln(chr(1),'E @DRAWTO ',0,' ',X,' ',Y);
     end;
     for X:=501 to 505 do begin
       Y:=3;
-      writeln(chr(1),'E @MOVETO',0,' ',X,' ',Y);
+      writeln(chr(1),'E @MOVETO ',0,' ',X,' ',Y);
       Y:=241;
-      writeln(chr(1),'E @DRAWTO',0,' ',X,' ',Y);
+      writeln(chr(1),'E @DRAWTO ',0,' ',X,' ',Y);
     end;
     for Y:=255 to 255 do begin
       X:=5;
-      writeln(chr(1),'E @MOVETO',0,' ',X,' ',Y);
+      writeln(chr(1),'E @MOVETO ',0,' ',X,' ',Y);
       X:=65;
-      writeln(chr(1),'E @DRAWTO',0,' ',X,' ',Y);
+      writeln(chr(1),'E @DRAWTO ',0,' ',X,' ',Y);
     end;
     for X:=60 to 65 do begin
       Y:=241;
-      writeln(chr(1),'E @MOVETO',0,' ',X,' ',Y);
+      writeln(chr(1),'E @MOVETO ',0,' ',X,' ',Y);
       Y:=255;
-      writeln(chr(1),'E @DRAWTO',0,' ',X,' ',Y);
+      writeln(chr(1),'E @DRAWTO ',0,' ',X,' ',Y);
     end;
   end;
 procedure SCHLAEGER1;
   begin
-    if POSX <= 9 then
-      POSX:=10;
-    if POSX >= ABSTAND then
-      POSX:=ABSTAND;
+    if POSX <= 9
+      then
+        begin
+          POSX:=10;
+        end;
+    if POSX >= ABSTAND
+      then
+        POSX:=ABSTAND;
     writeln(chr(1),'E LOESCHEN ',0,' ',POSX-A,' ',LAENGE);
     writeln(chr(1),'E SCHREIBEN ',0,' ',POSX,' ',LAENGE);
   end;
@@ -148,7 +153,7 @@ begin
   repeat
     writeln(chr(1),'E @CLRSCREEN');
     writeln(chr(1),'E NAME');
-    for ZAEHLER:=1 to 150000 do;
+    for ZAEHLER:=1 to 15000 do;
     writeln(chr(1),'E @CLRSCREEN');
     writeln(chr(27),'=',CHR(32+4),CHR(32+0),'GESTEUERT WIRD MIT DEN TASTEN:');
     writeln(chr(27),'=',CHR(32+6),CHR(32+0),'  L I N K S  =  4');
