@@ -45,6 +45,7 @@ procedure UMRANDUNG;
       writeln(chr(1),'E @DRAWTO ',0,' ',X,' ',Y);
     end;
   end;
+ 
 procedure SCHLAEGER1;
   begin
     if POSX <= 9
@@ -58,15 +59,21 @@ procedure SCHLAEGER1;
     writeln(chr(1),'E LOESCHEN ',0,' ',POSX-A,' ',LAENGE);
     writeln(chr(1),'E SCHREIBEN ',0,' ',POSX,' ',LAENGE);
   end;
+ 
 procedure TASTATUR;
   begin
     writeln(chr(1),'G $FFFFFF68');
     read(A);
-    A:=A-53;
+    if A >= 128
+      then
+        A:=0
+      else
+        A:=A-53;
     A:=A*15;
     POSX:=POSX+A;
     SCHLAEGER1;
   end;
+ 
 procedure PUNKTE;
   begin
     if (POSITIONX>=POSX) AND (POSITIONX<=POSX+LAENGE)
@@ -77,6 +84,7 @@ procedure PUNKTE;
         writeln(chr(27),'=', CHR(32+0),CHR(32+0),ENDE:4);
       end;
   end;
+ 
 procedure HOCH;
   begin
     while (POSITIONX>=20) AND (POSITIONY<=235) do
@@ -87,6 +95,7 @@ procedure HOCH;
         POSITIONY:=POSITIONY+GESCHWINDIGKEIT;
       end;
   end;
+ 
 procedure RUNTER;
   begin
     while (POSITIONX>=20) AND (POSITIONY>=ABFRAGE) do
@@ -99,6 +108,7 @@ procedure RUNTER;
           POSITIONY:=POSITIONY-GESCHWINDIGKEIT;
       end;
   end;
+ 
 procedure RECHTSHOCH;
   begin
     while (POSITIONX<=490) AND (POSITIONY<=235) do
@@ -109,6 +119,7 @@ procedure RECHTSHOCH;
           POSITIONY:=POSITIONY+GESCHWINDIGKEIT;
       end;
   end;
+ 
 procedure LINKSHOCH;
   begin
     while (POSITIONX>=20) AND (POSITIONY<=235) do
@@ -119,6 +130,7 @@ procedure LINKSHOCH;
           POSITIONY:=POSITIONY+GESCHWINDIGKEIT;
       end;
   end;        
+ 
 procedure LINKSRUNTER;
   begin
     while (POSITIONX>=20) AND (POSITIONY>=ABFRAGE) do
@@ -131,6 +143,7 @@ procedure LINKSRUNTER;
           POSITIONY:=POSITIONY-GESCHWINDIGKEIT;
       end;
   end;
+ 
 procedure RECHTSRUNTER;
   begin
     while (POSITIONX<=490) AND (POSITIONY>=ABFRAGE) do
@@ -143,12 +156,14 @@ procedure RECHTSRUNTER;
           POSITIONY:=POSITIONY-GESCHWINDIGKEIT;
       end;
   end;
+ 
 function RANDOM:integer;
   begin
     SEED:=SEED*27.182813+31.415917;
     SEED:=SEED-trunc(SEED);
     RANDOM:=trunc(SEED*6);
   end;
+ 
 begin
   repeat
     writeln(chr(1),'E @CLRSCREEN');
