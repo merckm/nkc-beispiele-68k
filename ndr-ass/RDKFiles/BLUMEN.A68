@@ -1,0 +1,65 @@
+start:
+ jsr @hide
+ move #10-1,d6
+st11:
+ jsr mehr 
+ move #36,d0    
+ jsr @drehe
+ dbra d6,st11
+ jsr @ci
+ rts
+ 
+mehr:     
+move #10-1,d5
+st1:
+ jsr blume
+ move #36,d0
+ jsr @drehe
+ dbra d5,st1
+ rts
+ 
+blume:
+ bsr bluete
+ move #-80,d0   
+ jsr @schreite
+ rts
+ 
+ jsr blatt 
+ move #-5,d0  
+ jsr @schreite
+ move #-90,d0
+ jsr @drehe
+ jsr blatt 
+ move #90,d0
+ jsr @drehe
+ move #-20,d0  
+ jsr @schreite
+ rts
+ 
+bluete:
+ move #5-1,d3 
+bl1:
+ jsr blatt 
+ move #360/5,d0
+ jsr @drehe
+ dbra d3,bl1
+ rts
+ 
+blatt:
+ jsr viertel   
+ move #90,d0
+ jsr @drehe
+ jsr viertel 
+ move #90,d0 
+ jsr @drehe
+ rts
+ 
+viertel:
+ move #45-1,d4  
+loop:
+ move #2,d0
+ jsr @drehe
+ move #10,d0
+ jsr @schr16tel
+ dbra d4,loop 
+ rts

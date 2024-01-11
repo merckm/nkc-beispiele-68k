@@ -1,0 +1,364 @@
+*************************
+; Ausflug nach Simland  ;
+; Version 1.0  RDK      ;
+; mit Perspektive       ;
+;  mit Drehung          ;
+; mit Korrektur         ;
+; mit Tastatur Bewegung ;
+;************************ 
+ 
+org $b000
+ 
+; ***** Vereinbarungs-Baustein *****         
+ 
+tasten equ $ffffff30
+ 
+;Wuerfel - Verbindungslinien             
+ 
+anzahl equ 112        
+ 
+ 
+                                                                                
+wuerfel: 
+ 
+ 
+dc.w -10,10,70,10,10,70
+dc.w 10,10,70,10,-10,70 
+dc.w 10,-10,70,-10,-10,70 
+dc.w -10,-10,70,-10,10,70 
+ 
+dc.w -10,-30,50,10,-30,50
+dc.w 10,-30,50,30,-10,50            
+dc.w 30,-10,50,30,10,50
+dc.w 30,10,50,10,30,50
+dc.w 10,30,50,-10,30,50
+dc.w -10,30,50,-30,10,50
+dc.w -30,10,50,-30,-10,50   
+dc.w -30,-10,50,-10,-30,50
+ 
+dc.w -30,-10,50,-10,-10,70     
+dc.w -10,-10,70,-10,-30,50
+dc.w 10,-30,50,10,-10,70 
+dc.w 10,-10,70,30,-10,50  
+dc.w 30,10,50,10,10,70
+dc.w 10,10,70,10,30,50  
+dc.w -10,30,50,-10,10,70 
+dc.w -10,10,70,-30,10,50  
+ 
+dc.w -10,-30,30,10,-30,30 
+dc.w 10,-30,30,30,-10,30
+dc.w 30,-10,30,30,10,30 
+dc.w 30,10,30,10,30,30 
+dc.w 10,30,30,-10,30,30  
+dc.w -10,30,30,-30,10,30 
+dc.w -30,10,30,-30,-10,30
+dc.w -30,-10,30,-10,-30,30 
+ 
+dc.w -10,-30,50,-10,-30,30       
+dc.w 10,-30,50,10,-30,30
+dc.w 30,-10,50,30,-10,30
+dc.w 30,10,50,30,10,30 
+dc.w 10,30,50,10,30,30
+dc.w -10,30,50,-10,30,30 
+dc.w -30,10,50,-30,10,30
+dc.w -30,-10,50,-30,-10,30
+ 
+dc.w -10,10,10,10,10,10    
+dc.w 10,10,10,10,-10,10
+dc.w 10,-10,10,-10,-10,10                                                       
+dc.w -10,-10,10,-10,10,10 
+ 
+dc.w -30,-10,30,-10,-10,10
+dc.w -10,-10,10,-10,-30,30   
+dc.w 10,-30,30,10,-10,10 
+dc.w 10,-10,10,30,-10,30
+dc.w 30,10,30,10,10,10 
+dc.w 10,10,10,10,30,30             
+dc.w -10,30,30,-10,10,10           
+dc.w -10,10,10,-30,10,30          
+                                    
+dc.w -10,10,-10,10,10,-10          
+dc.w 10,10,-10,10,-10,-10          
+dc.w 10,-10,-10,-10,-10,-10                                     
+dc.w -10,-10,-10,-10,10,-10
+ 
+dc.w -10,10,10,-10,10,-10                      
+dc.w 10,10,10,10,10,-10   
+dc.w 10,-10,10,10,-10,-10
+dc.w -10,-10,10,-10,-10,-10
+ 
+dc.w -60,10,-40,-50,10,-40
+dc.w -50,10,-40,-50,-10,-40
+dc.w -50,-10,-40,-60,-10,-40
+dc.w -60,-10,-40,-60,10,-40
+dc.w -10,60,-40,10,60,-40
+dc.w 10,60,-40,10,50,-40   
+dc.w 10,50,-40,-10,50,-40
+dc.w -10,50,-40,-10,60,-40
+dc.w 50,10,-40,60,10,-40 
+dc.w 60,10,-40,60,-10,-40
+dc.w 60,-10,-40,50,-10,-40  
+dc.w 50,-10,-40,50,10,-40
+dc.w 10,-50,-40,10,-60,-40
+dc.w 10,-60,-40,-10,-60,-40
+dc.w -10,-60,-40,-10,-50,-40
+dc.w -10,-50,-40,10,-50,-40
+     
+dc.w -50,-10,-40,-10,-10,10     
+dc.w -10,-10,10,-10,-50,-40 
+dc.w 10,-50,-40,10,-10,10 
+dc.w 10,-10,10,50,-10,-40         
+dc.w 50,10,-40,10,10,10 
+dc.w 10,10,10,10,50,-40 
+dc.w -10,50,-40,-10,10,10  
+dc.w -10,10,10,-50,10,-40   
+ 
+dc.w -10,60,-50,10,60,-50
+dc.w 10,60,-50,10,40,-50
+dc.w 10,40,-50,-10,40,-50
+dc.w -10,40,-50,-10,60,-50
+dc.w 40,10,-50,60,10,-50 
+dc.w 60,10,-50,60,-10,-50    
+dc.w 60,-10,-50,40,-10,-50
+dc.w 40,-10,-50,40,10,-50
+dc.w -10,-40,-50,10,-40,-50
+dc.w 10,-40,-50,10,-60,-50
+dc.w 10,-60,-50,-10,-60,-50
+dc.w -10,-60,-50,-10,-40,-50
+dc.w -60,10,-50,-40,10,-50           
+dc.w -40,10,-50,-40,-10,-50
+dc.w -40,-10,-50,-60,-10,-50
+dc.w -60,-10,-50,-60,10,-50
+ 
+dc.w -40,-10,-50,-10,-10,-10
+dc.w -10,-10,-10,-10,-40,-50
+dc.w 10,-40,-50,10,-10,-10 
+dc.w 10,-10,-10,40,-10,-50 
+dc.w 40,10,-50,10,10,-10
+dc.w 10,10,-10,10,40,-50
+dc.w -10,40,-50,-10,10,-10
+dc.w -10,10,-10,-40,10,-50
+ 
+dc.w -10,60,-40,-10,60,-50
+dc.w 10,60,-40,10,60,-50
+dc.w 60,10,-40,60,10,-50  
+dc.w 60,-10,-40,60,-10,-50
+dc.w 10,-60,-40,10,-60,-50  
+dc.w -10,-60,-40,-10,-60,-50
+dc.w -60,-10,-40,-60,-10,-50
+dc.w -60,10,-40,-60,10,-50
+ 
+koor   equ 12 ; Anzahl Bytes pro Eintrag
+ 
+x1 equ 0  ; Offset-Adressierung  
+y1 equ 2  ; Wortdistanz
+z1 equ 4
+x2 equ 6
+y2 equ 8
+z2 equ 10
+ 
+ 
+y0: dc.w  0 ;auch variabel, Augpunkt
+y0a: dc.w 0
+y0b: dc.w  0
+y0c: dc.w  0
+ 
+persp: dc.w  0
+perspa: dc.w 0
+perspb: dc.w 0
+perspc: dc.w  0
+ 
+xf1: dc.w 0  ; Variable
+zf1: dc.w 0    
+xf2: dc.w 0    
+zf2: dc.w 0  
+ 
+x11: dc.w  0
+z11: dc.w  0
+ 
+x22: dc.w  0
+z22: dc.w  0
+ 
+betha: dc.w  0
+bethaa: dc.w  0
+bethab: dc.w  0
+bethac: dc.w  0
+ 
+sinb: dc.w  0 ; bleiben constant innerhalb
+cosb: dc.w  0 ; wdh1 
+ 
+lese: dc.b 0 ; fuer bildseiten    
+schreib: dc.b 0
+ 
+ 
+; ***** Unterprogramm-Baustein *****
+ 
+gibaus:
+ lea wuerfel,a0  ; Startadresse
+ move betha,d0   ;nur einmal berechnen pro Schleife
+ jsr @sin
+ move d0,sinb 
+ move betha,d0
+ jsr @cos
+ move d0,cosb
+;
+ move #anzahl-1,d5 ; Schleifenzaehler
+wdh1:
+; Drehformel
+ move x1(a0),d0
+ muls cosb,d0
+ move z1(a0),d1  
+ muls sinb,d1 
+ add.l d1,d0
+ divs #256,d0 ; normieren
+ move d0,x11  ; x':=x*cos(b)+z*sin(b)
+ move x1(a0),d0  
+ neg d0
+ muls sinb,d0
+ move z1(a0),d1    
+ muls cosb,d1
+ add.l d1,d0
+ divs #256,d0 ; normieren  
+ move d0,z11  ; z':=-x*sin(b)+z*cos(b)
+ move x2(a0),d0        
+ muls cosb,d0
+ move z2(a0),d1
+ muls sinb,d1   
+ add.l d1,d0 
+ divs #256,d0 ; normieren   
+ move d0,x22
+ move x2(a0),d0
+ neg d0
+ muls sinb,d0
+ move z2(a0),d1    
+ muls cosb,d1
+ add.l d1,d0
+ divs #256,d0 ; normieren
+ move d0,z22
+; Ausgabeteil
+ move x11,d0    
+ muls y0,d0  
+ move y0,d1 
+ sub y1(a0),d1  
+ divs d1,d0 ; xf1 berechnet 
+ move d0,xf1
+ move z11,d0   
+ add persp,d0   
+ muls y0,d0 
+ divs d1,d0 ; zf1 berechnet
+ move d0,zf1
+ move x22,d0       
+ muls y0,d0 
+ move y0,d1 
+ sub y2(a0),d1 
+ divs d1,d0
+ move d0,xf2 ; xf1 berechnet
+ move z22,d0   
+ add persp,d0 
+ muls y0,d0 
+ divs d1,d0
+ move d0,zf2
+ move xf1,d1
+ move zf1,d2
+ add #256,d1  ; In Bildschirmitte bringen
+ add #256,d2
+ sub persp,d2 
+ ext.l d2
+ divs #2,d2
+ jsr @moveto
+ move xf2,d1
+ move zf2,d2
+ add #256,d1 ; In Bildschirmmitte bringen
+ sub persp,d2 
+ add #256,d2
+ ext.l d2
+ divs #2,d2
+ jsr @drawto
+ 
+ adda.l #koor,a0
+ dbra d5,wdh1 ; Bis alle Kanten berechnet
+rts
+ 
+ 
+; ****** Programm-Baustein *****
+ 
+start:
+ move #-500,y0
+ move #-500,y0a
+ move #-500,y0b
+ move #-500,y0c
+ move #200,persp
+ move #200,perspa
+ move #200,perspb
+ move #200,perspc
+ 
+;
+ 
+ clr betha
+ clr bethaa
+ clr bethab
+ clr bethac
+ 
+ move.b #0,lese
+ move.b #1,schreib
+wdh0:
+ move.b lese,d1
+ move.b schreib,d0
+ jsr @newpage  ; Bildseite anwaehlen
+ jsr @erapen ; zuerst loeschen mit altem Winkel
+ move bethac,betha 
+ move y0c,y0
+ move perspc,persp 
+ jsr gibaus
+ add #2,betha ; dann ausgeben mit neuem
+ jsr @setpen
+ move bethaa,betha         
+ move y0a,y0
+ move perspa,persp
+ jsr gibaus
+ move bethab,bethac
+ move bethaa,bethab
+ move y0b,y0c
+ move y0a,y0b
+ move perspb,perspc
+ move perspa,perspb  
+ btst.b #0,tasten        
+ bne sk1
+ add #5,bethaa
+ 
+sk1:
+ btst.b #1,tasten
+ bne sk2
+ sub #5,bethaa 
+ 
+sk2: 
+ btst.b #2,tasten
+ bne sk3
+ add #5,y0a
+ 
+sk3:
+ btst.b #3,tasten
+ bne sk4
+ sub #5,y0a
+ 
+sk4:
+ btst.b #4,tasten
+ bne sk5
+ add #5,perspa
+ 
+sk5:
+ btst.b #5,tasten
+ bne final
+ sub #5,perspa
+ 
+final: 
+ 
+ eori.b #1,lese
+ eori.b #1,schreib
+ bra wdh0
+ 
+ 
+; ********
+ end
+ 
+
