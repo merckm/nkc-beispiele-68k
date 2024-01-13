@@ -1,0 +1,24 @@
+CPM-68K - File Explorer - (C) Martin Merck                                     
++--------------------------------------+--------------------------------------+
+| Drive: A:                            | Drive: G:                            |
+| Size:    776K    Free:     776K      | Size:    776K    Free:     776K      |
+| DirSize: 256     BlckSize: 2048      | DirSize: 256     BlckSize: 2048      |
++--------------------------------------+--------------------------------------+
+| Name         Size  Name         Size | Name         Size  Name         Size |
+|>FILEDIR2.68K 128K< FILEDIR2.68K 128K | FILEDIR2.68K 128K  FILEDIR2.68K 128K |
+| FILEDIR2.68K 128K  FILEDIR2.68K 128K | FILEDIR2.68K 128K  FILEDIR2.68K 128K |
+| FILEDIR2.68K 128K  FILEDIR2.68K 128K | FILEDIR2.68K 128K  FILEDIR2.68K 128K |
+| FILEDIR2.68K 128K  FILEDIR2.68K 128K | FILEDIR2.68K 128K  FILEDIR2.68K 128K |
+| FILEDIR2.68K 128K  FILEDIR2.68K 128K | FILEDIR2.68K 128K  FILEDIR2.68K 128K |
+| FILEDIR2.68K 128K  FILEDIR2.68K 128K | FILEDIR2.68K 128K  FILEDIR2.68K 128K |
+| FILEDIR2.68K 128K  FILEDIR2.68K 128K | FILEDIR2.68K 128K  FILEDIR2.68K 128K |
+| FILEDIR2.68K 128K  FILEDIR2.68K 128K | FILEDIR2.68K 128K  FILEDIR2.68K 128K |
+| FILEDIR2.68K 128K  FILEDIR2.68K 128K | FILEDIR2.68K 128K  FILEDIR2.68K 128K |
+| FILEDIR2.68K 128K  FILEDIR2.68K 128K | FILEDIR2.68K 128K  FILEDIR2.68K 128K |
+| FILEDIR2.68K 128K  FILEDIR2.68K 128K | FILEDIR2.68K 128K  FILEDIR2.68K 128K |
+| FILEDIR2.68K 128K  FILEDIR2.68K 128K | FILEDIR2.68K 128K  FILEDIR2.68K 128K |
+| FILEDIR2.68K 128K  FILEDIR2.68K 128K | FILEDIR2.68K 128K  FILEDIR2.68K 128K |
+| FILEDIR2.68K 128K  FILEDIR2.68K 128K | FILEDIR2.68K 128K  FILEDIR2.68K 128K |
++--------------------------------------+--------------------------------------+
+>
+| Ctrl-D=Sel Drive | Ctrl-V=Display |
