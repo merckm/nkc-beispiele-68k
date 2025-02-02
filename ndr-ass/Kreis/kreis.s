@@ -3,13 +3,12 @@ kreis:
     jsr @schreite
     move #90,d0
     jsr @drehe
-
-
+ 
     move #360-1,d3
-.schleife:
+schleife:
     move #1,d0
     jsr @schreite
     move #1,d0
     jsr @drehe
-    dbra d3,.schleife
+    dbra d3,schleife
     rts
