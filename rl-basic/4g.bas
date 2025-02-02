@@ -1,0 +1,83 @@
+     1 h1 = 35:h2 = 35:h3 = 35:h4 = 35:h5 = 35:h6 = 35:h7 = 35
+     5 x = 6
+     6 PAGE 0,0
+    10 CLS 
+    20 MOVETO 0,0
+    30 DRAW  TO 490,0
+    40 FOR a = 0 TO 490 STEP 70
+    50   MOVETO a,0
+    60   DRAW  TO a,420
+    70 NEXT 
+    71 FOR a = 0 TO 420 STEP 70
+    72   MOVETO 0,a
+    73   DRAW  TO 490,a
+    74 NEXT 
+    80 LOCATE x,2
+    90 PRINT "*"
+   100 a$ =  INKEY$ 
+   105 IF a$ = "1" OR a$ = "2" THEN  LOCATE x,2: PRINT " "
+   110 IF a$ = "1" THEN  LET x = x - 11.5
+   115 IF a$ = "2" THEN  LET x = x + 11.5
+   116 IF x < 6 THEN  LET x = 6
+   117 IF x > 75 THEN  LET x = 75
+   120 LOCATE x,2: PRINT "*"
+   125 IF a$ = "0" THEN  GOSUB 1000
+   126 IF a$ = "n" THEN  RUN 
+   130 GOTO 100
+  1000 z = z + 1
+  1005 IF x = 6 THEN  GOTO 1100
+  1010 IF x = 17.5 THEN  GOTO 1110
+  1020 IF x = 29 THEN  GOTO 1120
+  1030 IF x = 40.5 THEN  GOTO 1130
+  1040 IF x = 52 THEN  GOTO 1140
+  1050 IF x = 63.5 THEN  GOTO 1150
+  1060 IF x = 75 THEN  GOTO 1160
+  1100 IF h1 > 385 THEN  LET z = z - 1: RETURN 
+  1101 IF z / 2 =  INT (z / 2) THEN  GOTO 1107
+  1105 CIRCLE (35,h1),30,f
+  1106 GOTO 1108
+  1107 CIRCLE (35,h1),30
+  1108 h1 = h1 + 70
+  1109 RETURN 
+  1110 IF h2 > 385 THEN  LET z = z - 1: RETURN 
+  1111 IF z / 2 =  INT (z / 2) THEN  GOTO 1117
+  1115 CIRCLE (105,h2),30,f
+  1116 GOTO 1118
+  1117 CIRCLE (105,h2),30
+  1118 h2 = h2 + 70
+  1119 RETURN 
+  1120 IF h3 > 385 THEN  LET z = z - 1: RETURN 
+  1121 IF z / 2 =  INT (z / 2) THEN  GOTO 1127
+  1125 CIRCLE (175,h3),30,f
+  1126 GOTO 1128
+  1127 CIRCLE (175,h3),30
+  1128 h3 = h3 + 70
+  1129 RETURN 
+  1130 IF h4 > 385 THEN  LET z = z - 1: RETURN 
+  1131 IF z / 2 =  INT (z / 2) THEN  GOTO 1137
+  1135 CIRCLE (245,h4),30,f
+  1136 GOTO 1138
+  1137 CIRCLE (245,h4),30
+  1138 h4 = h4 + 70
+  1139 RETURN 
+  1140 IF h5 > 385 THEN  LET z = z - 1: RETURN 
+  1141 IF z / 2 =  INT (z / 2) THEN  GOTO 1147
+  1145 CIRCLE (315,h5),30,f
+  1146 GOTO 1148
+  1147 CIRCLE (315,h5),30
+  1148 h5 = h5 + 70
+  1149 RETURN 
+  1150 IF h6 > 385 THEN  LET z = z - 1: RETURN 
+  1151 IF z / 2 =  INT (z / 2) THEN  GOTO 1157
+  1155 CIRCLE (385,h6),30,f
+  1156 GOTO 1158
+  1157 CIRCLE (385,h6),30
+  1158 h6 = h6 + 70
+  1159 RETURN 
+  1160 IF h7 > 385 THEN  LET z = z - 1: RETURN 
+  1161 IF z / 2 =  INT (z / 2) THEN  GOTO 1167
+  1165 CIRCLE (455,h7),30,f
+  1166 GOTO 1168
+  1167 CIRCLE (455,h7),30
+  1168 h7 = h7 + 70
+  1169 RETURN 
